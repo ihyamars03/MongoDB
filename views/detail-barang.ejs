@@ -1,0 +1,26 @@
+<div class="container-mt3">
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Keterangan Barang</h2>
+            <% if (!item) { %>
+              <div class="alert alert-danger fw-bold" role="alert">
+                Data Barang tidak ada <br><a href="/list-barang" class="alert-link fw-normal">Silahkan Kembali ke Rekap Harian</a>
+              </div>
+            <% } else {%>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Tanggal: <%= item.tgl %> </h5>
+                  <h6 class="card-subtitle mb-2 text-muted">Nama: <%= item.nama %> </h6>
+                  <h6 class="card-subtitle mb-2 text-muted">Harga: Rp.<%= item.harga %> </h6>
+                  <p class="fw-bold">Keterangan: </p>
+                  <p class="card-text"><%= item.keterangan %> </p>
+                  <div class="d-grid gap-2 d-md-block"></div>
+                      <a href="/list-barang" class="btn btn-primary badge rounded-pill bg-primary">Back</a>
+                      <a href="/list-barang/delete/<%= item._id %> " class="btn btn-danger badge rounded-pill bg-danger" onclick="return confirm('yakin ingin menhapus ?');">Delete</a>
+                  </div>
+                </div>
+              </div>
+            <% } %> 
+        </div>
+    </div>
+</div>

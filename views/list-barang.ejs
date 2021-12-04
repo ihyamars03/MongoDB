@@ -1,0 +1,51 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-sm-8">
+            <h2>Daftar Rekap Harian</h2>
+            <a href="/list-barang/add" class="btn btn-primary ">Tambah Barang</a>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Tanggal (bln/tgl/tahun)</th>
+                    <th scope="col">Nama</th>
+                    <th scope="col">Harga</th>
+                    <th scope="col">Keterangan</th> 
+                  </tr>
+                </thead>
+                <tbody>
+                    <% if (items.length === 0) { %>
+                        <tr>
+                            <td colspan="4">
+                                <div class="alert alert-danger" role="alert">
+                                    Rekapan Masih Kosong
+                                </div>
+                            </td>
+                        </tr>
+                    <% } %>
+                    
+                  <% items.forEach(item => { %>
+                    <tr>
+                        <th scope="row"><%= item.tgl %> </th>
+                        <td><%= item.nama %> </td>
+                        <td>Rp.<%= item.harga %> </td>
+                        <td><a href="/list-barang/<%= item._id %> " class="btn btn-success badge rounded-pill bg-success">Cek</a></td>
+                    </tr>
+                  <% }) %>
+                </tbody>
+              </table>
+        </div>
+        <div class="col-sm-4 mt-5">
+            <div class="card" style="width: 150px; margin-top: 75px">
+              <div class="card-body">
+                <h5 class="card-title">Total Harga</h5>
+                <% items.forEach(item => { %>
+                    <% total += parseInt(item.harga) %>
+                <% }) %>
+                <p class="card-text">Rp.<%= total %> </p>  
+              </div>
+              <button class="btn btn-primary" type="submit">Download</button>
+            </div>
+          </div>
+          
+    </div>
+</div>
